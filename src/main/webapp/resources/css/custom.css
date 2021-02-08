@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+body {
+	background-color: cyan;
+}
+
+#form-design {
+	border: 1px solid black;
+	width: 500px;
+	height: 500px;
+	margin: 10px 0px 0px 350px;
+}
+
+input {
+	padding: 10px;
+}
+
+label {
+	font-family: serif;
+	font-size: large;
+	font-weight: bold;
+}
