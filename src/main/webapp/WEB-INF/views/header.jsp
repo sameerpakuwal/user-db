@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
 <script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript"
-	src="resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <sec:authentication  property="principal" var = "principal"/>
