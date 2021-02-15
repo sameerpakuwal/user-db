@@ -60,4 +60,21 @@ public class UserRepositoryImpl implements UserRepository {
 
         return(User) query.getSingleResult();
     }
-}
+
+    @Override
+    public User getUserByEmail(String email) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query =  session.createQuery("from User u where u.email =?1");
+        query.setParameter(1,email);
+
+        return(User) query.getSingleResult();
+    }
+
+    @Override
+    public User findByResetPasswordToken(String resetPasswordToken) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User U where U.resetPasswordToken=?1");
+                query.setParameter(1, resetPasswordToken);
+        return (User) query.getSingleResult();
+    }
+    }

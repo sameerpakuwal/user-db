@@ -5,6 +5,8 @@ import com.vastika.ud.model.User;
 import com.vastika.ud.repository.UserRepository;
 import com.vastika.ud.util.PasswordEncoderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +50,40 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getUserByEmail(String email) {
+        return userRepository.getUserByEmail(email);
+    }
+
+    @Override
     public List<User> getAllUser() {
         return userRepository.getAllUser();
+    }
+
+    @Override
+    public void updateResetPassword(String token, String email) {
+        User user = userRepository.getUserByEmail(email);
+
+        if (user != null) {
+
+            user.setResetPasswordToken(token);
+            userRepository.updateUser(user);
+
+        }else {
+            throw new UsernameNotFoundException("No User found with email!!" +email);
+        }
+    }
+
+    @Override
+    public User getByResetPasswordToken(String token) {
+        return userRepository.findByResetPasswordToken(token);
+    }
+
+    @Override
+    public void updatePassword(User user, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+        user.setResetPasswordToken(null);
+        userRepository.updateUser(user);
     }
 }

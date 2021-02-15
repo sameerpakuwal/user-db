@@ -12,4 +12,7 @@ public interface UserRepository {
     User getUserById(int id);
     List<User> getAllUser();
     User getUserByUserName(String username);
+    User getUserByEmail(String email);
+    public User findByResetPasswordToken(String token);
+
 }

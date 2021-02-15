@@ -14,6 +14,7 @@
             <form class="form-signin" action ="/login" method="post">
             <span style=color:red>${logoutmsg}</span>
                <span style=color:red>${loginFailMsg}</span>
+                <span style=color:red>${message}</span>
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="inputEmail" class="form-control" placeholder="User Name" name = "username" required autofocus>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" name = "password" required>
@@ -24,7 +25,7 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
+            <a href="/forgot_password" class="forgot-password">
                 Forgot the password?
             </a>
         </div><!-- /card-container -->
